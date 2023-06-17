@@ -1,87 +1,80 @@
-# typescript-npm-cli-template
+\
+Dynoport
+==========
 
-> Boilerplate to kickstart creating a Node.js command-line tool
+Dynoport is a CLI tool that allows you to easily import and export data from a specified DynamoDB table. It provides a convenient way to transfer data between DynamoDB and JSON files.
 
-Inspired by [node-cli-boilerplate](https://github.com/sindresorhus/node-cli-boilerplate)
+Installation
+------------
 
-## Getting started
+To install Dynoport, use the following command:
 
-### Set up your repository
+Copy code
 
-**Click the "Use this template" button.**
+`npm install -g dynoport`
 
-Alternatively, create a new directory and then run:
+Usage
+-----
 
-```bash
-curl -fsSL https://github.com/ryansonshine/typescript-npm-cli-template/archive/main.tar.gz | tar -xz --strip-components=1
-```
+Dynoport supports two modes: export and import. Here's how you can use each mode:
 
-Replace `FULL_NAME`, `GITHUB_USER`, and `REPO_NAME` in the script below with your own details to personalize your new package:
+### Export Mode
 
-```bash
-FULL_NAME="John Smith"
-GITHUB_USER="johnsmith"
-REPO_NAME="my-cool-package"
-sed -i.mybak "s/\([\/\"]\)(ryansonshine)/$GITHUB_USER/g; s/typescript-npm-cli-template\|my-cli-name/$REPO_NAME/g; s/Ryan Sonshine/$FULL_NAME/g" package.json package-lock.json README.md
-rm *.mybak
-```
+In export mode, Dynoport exports the data from a DynamoDB table and saves it as a JSON file.
 
-### Add NPM Token
+cssCopy code
 
-Add your npm token to your GitHub repository secrets as `NPM_TOKEN`.
+`dynoport --table <tableName> --filePath <outputFilePath> --mode export`
 
-### Add Codecov integration
+-   `<tableName>`: The name of the DynamoDB table you want to export.
+-   `<outputFilePath>`: The path where the JSON file will be saved.
 
-Enable the Codecov GitHub App [here](https://github.com/apps/codecov).
+Example:
 
-**Remove everything from here and above**
+cssCopy code
 
----
+`dynoport --table myTable --filePath ./data.json --mode export`
 
-# my-cli-name
+This command will export the data from the "myTable" DynamoDB table and save it as a JSON file at "./data.json".
 
-[![npm package][npm-img]][npm-url]
-[![Build Status][build-img]][build-url]
-[![Downloads][downloads-img]][downloads-url]
-[![Issues][issues-img]][issues-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
+### Import Mode
 
-> My awesome command-line tool
+In import mode, Dynoport imports data from a JSON file and inserts it into a specified DynamoDB table.
 
-## Install
+cssCopy code
 
-```bash
-npm install my-cli-name
-```
+`dynoport --table <tableName> --filePath <inputFilePath> --mode import`
 
-## Usage
+-   `<tableName>`: The name of the DynamoDB table where you want to import the data.
+-   `<inputFilePath>`: The path to the JSON file containing the data to be imported.
 
-```bash
-Usage: my-command [options]
+Example:
 
-Options:
-  -V, --version            output the version number
-  -d, --debug              enables verbose logging (default: false)
+cssCopy code
 
-Examples:
+`dynoport --table myTable --filePath ./data.json --mode import`
 
-  $ my-command --version
-  1.0.0
-```
+This command will import the data from the "./data.json" file and insert it into the "myTable" DynamoDB table.
 
-[build-img]:https://github.com/ryansonshine/typescript-npm-cli-template/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/ryansonshine/typescript-npm-cli-template/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/typescript-npm-cli-template
-[downloads-url]:https://www.npmtrends.com/typescript-npm-cli-template
-[npm-img]:https://img.shields.io/npm/v/typescript-npm-cli-template
-[npm-url]:https://www.npmjs.com/package/typescript-npm-cli-template
-[issues-img]:https://img.shields.io/github/issues/ryansonshine/typescript-npm-cli-template
-[issues-url]:https://github.com/ryansonshine/typescript-npm-cli-template/issues
-[codecov-img]:https://codecov.io/gh/ryansonshine/typescript-npm-cli-template/branch/main/graph/badge.svg
-[codecov-url]:https://codecov.io/gh/ryansonshine/typescript-npm-cli-template
-[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]:https://github.com/semantic-release/semantic-release
-[commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]:http://commitizen.github.io/cz-cli/
+Additional Notes
+----------------
+
+-   The AWS credentials and region should be properly configured on your system before using Dynoport. Refer to the AWS documentation for more information on configuring credentials.
+
+-   The DynamoDB table specified should exist and be accessible with the provided credentials.
+
+-   The exported JSON file will be created or appended to if it already exists.
+
+-   During import, the JSON file should contain an array of objects, where each object represents a record to be inserted into the DynamoDB table.
+
+-   For large datasets, the import operation is batched to ensure efficient processing. The batch size can be adjusted using the `chunkSize` variable in the code.
+
+Version
+-------
+
+Dynoport version: 1.0.0
+
+License
+-------
+
+This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/c/LICENSE) file for details
