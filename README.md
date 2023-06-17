@@ -22,16 +22,12 @@ Dynoport supports two modes: export and import. Here's how you can use each mode
 
 In export mode, Dynoport exports the data from a DynamoDB table and saves it as a JSON file.
 
-cssCopy code
-
 `dynoport --table <tableName> --filePath <outputFilePath> --mode export`
 
 -   `<tableName>`: The name of the DynamoDB table you want to export.
 -   `<outputFilePath>`: The path where the JSON file will be saved.
 
 Example:
-
-cssCopy code
 
 `dynoport --table myTable --filePath ./data.json --mode export`
 
@@ -41,16 +37,12 @@ This command will export the data from the "myTable" DynamoDB table and save it 
 
 In import mode, Dynoport imports data from a JSON file and inserts it into a specified DynamoDB table.
 
-cssCopy code
-
 `dynoport --table <tableName> --filePath <inputFilePath> --mode import`
 
 -   `<tableName>`: The name of the DynamoDB table where you want to import the data.
 -   `<inputFilePath>`: The path to the JSON file containing the data to be imported.
 
 Example:
-
-cssCopy code
 
 `dynoport --table myTable --filePath ./data.json --mode import`
 
@@ -77,4 +69,4 @@ Dynoport version: 1.0.0
 License
 -------
 
-This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/c/LICENSE) file for details
+This project is licensed under the MIT License
