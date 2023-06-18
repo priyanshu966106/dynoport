@@ -53,6 +53,7 @@
   "homepage": "https://github.com/ryansonshine/typescript-npm-cli-template#readme",
   "dependencies": {
     "@types/ndjson": "^2.0.1",
+    "aws-sdk": "^2.1399.0",
     "bluebird": "^3.7.2",
     "cli-progress": "^3.12.0",
     "commander": "^7.2.0",
