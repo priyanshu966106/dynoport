@@ -1,5 +1,5 @@
 {
-  "name": "typescript-npm-cli-template",
+  "name": "dynoport",
   "version": "0.0.0-development",
   "description": "A template for creating npm CLI tools using TypeScript and VSCode",
   "files": [
@@ -23,13 +23,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryansonshine/typescript-npm-cli-template.git"
+    "url": "git+https://github.com/priyanshu966106/dynoport.git"
   },
   "license": "MIT",
   "author": {
-    "name": "Ryan Sonshine",
-    "email": "ryansonshine@users.noreply.github.com",
-    "url": "https://github.com/ryansonshine"
+    "name": "Priyanshu Kumar",
+    "email": "priyanshu966106@gmail.com",
+    "url": "https://github.com/priyanshu966106"
   },
   "engines": {
     "node": ">=12.0"
@@ -47,9 +47,9 @@
     "codecov"
   ],
   "bugs": {
-    "url": "https://github.com/ryansonshine/typescript-npm-cli-template/issues"
+    "url": "https://github.com/priyanshu966106/dynoport/issues"
   },
-  "homepage": "https://github.com/ryansonshine/typescript-npm-cli-template#readme",
+  "homepage": "https://github.com/priyanshu966106/dynoport/#readme",
   "dependencies": {
     "@types/ndjson": "^2.0.1",
     "aws-sdk": "^2.1399.0",
