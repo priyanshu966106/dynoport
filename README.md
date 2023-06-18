@@ -4,8 +4,7 @@ Dynoport
 
 Dynoport is a CLI tool that allows you to easily import and export data from a specified DynamoDB table. It provides a convenient way to transfer data between DynamoDB and JSON files.
 
-Installation
-------------
+## Installation
 
 To install Dynoport, use the following command:
 
@@ -13,8 +12,7 @@ Copy code
 
 `npm install -g dynoport`
 
-Usage
------
+## Usage
 
 Dynoport supports two modes: export and import. Here's how you can use each mode:
 
@@ -22,14 +20,15 @@ Dynoport supports two modes: export and import. Here's how you can use each mode
 
 In export mode, Dynoport exports the data from a DynamoDB table and saves it as a JSON file.
 
-`dynoport --table <tableName> --filePath <outputFilePath> --mode export`
+`dynoport --table <tableName> --filePath <outputFilePath> --mode export -region eu-west-1`
 
--   `<tableName>`: The name of the DynamoDB table you want to export.
--   `<outputFilePath>`: The path where the JSON file will be saved.
+- `<tableName>`: The name of the DynamoDB table you want to export.
+- `<outputFilePath>`: The path where the JSON file will be saved.
+- `<region>`: Specify the aws region to use.
 
 Example:
 
-`dynoport --table myTable --filePath ./data.json --mode export`
+`dynoport --table myTable --filePath ./data.json --mode export --region us-east-1`
 
 This command will export the data from the "myTable" DynamoDB table and save it as a JSON file at "./data.json".
 
@@ -37,10 +36,11 @@ This command will export the data from the "myTable" DynamoDB table and save it 
 
 In import mode, Dynoport imports data from a JSON file and inserts it into a specified DynamoDB table.
 
-`dynoport --table <tableName> --filePath <inputFilePath> --mode import`
+`dynoport --table <tableName> --filePath <inputFilePath> --mode import --region us-east-1`
 
--   `<tableName>`: The name of the DynamoDB table where you want to import the data.
--   `<inputFilePath>`: The path to the JSON file containing the data to be imported.
+- `<tableName>`: The name of the DynamoDB table where you want to import the data.
+- `<inputFilePath>`: The path to the JSON file containing the data to be imported.
+- `<region>`: Specify the aws region to use.
 
 Example:
 
@@ -48,25 +48,22 @@ Example:
 
 This command will import the data from the "./data.json" file and insert it into the "myTable" DynamoDB table.
 
-Additional Notes
-----------------
+## Additional Notes
 
--   The AWS credentials and region should be properly configured on your system before using Dynoport. Refer to the AWS documentation for more information on configuring credentials.
+- The AWS credentials and region should be properly configured on your system before using Dynoport. Refer to the AWS documentation for more information on configuring credentials.
 
--   The DynamoDB table specified should exist and be accessible with the provided credentials.
+- The DynamoDB table specified should exist and be accessible with the provided credentials.
 
--   The exported JSON file will be created or appended to if it already exists.
+- The exported JSON file will be created or appended to if it already exists.
 
--   During import, the JSON file should contain an array of objects, where each object represents a record to be inserted into the DynamoDB table.
+- During import, the JSON file should contain an array of objects, where each object represents a record to be inserted into the DynamoDB table.
 
--   For large datasets, the import operation is batched to ensure efficient processing. The batch size can be adjusted using the `chunkSize` variable in the code.
+- For large datasets, the import operation is batched to ensure efficient processing. The batch size can be adjusted using the `chunkSize` variable in the code.
 
-Version
--------
+## Version
 
 Dynoport version: 1.0.0
 
-License
--------
+## License
 
 This project is licensed under the MIT License

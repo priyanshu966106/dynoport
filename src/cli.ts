@@ -19,6 +19,7 @@ program
   .name('my-command')
   .requiredOption('-t, --table <tableName>', 'DynamoDB table name')
   .requiredOption('-f, --filePath <filePath>', 'Output JSON file path')
+  .option('-r, --region <region>', 'Aws region to use')
   .option(
     '-m, --mode <mode>',
     'Export or Import mode [export|import]',
@@ -26,9 +27,13 @@ program
   )
   .parse(process.argv);
 
-async function exportTableToJson(tableName: string, outputFilePath: string) {
+async function exportTableToJson(
+  tableName: string,
+  outputFilePath: string,
+  region: string
+) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const dynamodb = new AWS.DynamoDB.DocumentClient({ region: 'eu-west-1' });
+  const dynamodb = new AWS.DynamoDB.DocumentClient({ region });
 
   const scanParams: AWS.DynamoDB.DocumentClient.ScanInput = {
     TableName: tableName,
@@ -72,9 +77,13 @@ interface Item {
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-async function importJsonToTable(tableName: string, filePath: string) {
+async function importJsonToTable(
+  tableName: string,
+  filePath: string,
+  region: string
+) {
   // Create an AWS DynamoDB client
-  const dynamoDB = new AWS.DynamoDB.DocumentClient({ region: 'eu-west-1' });
+  const dynamoDB = new AWS.DynamoDB.DocumentClient({ region });
 
   // Read the NDJSON file
   const fileStream = fs.createReadStream(filePath);
@@ -146,7 +155,7 @@ async function importJsonToTable(tableName: string, filePath: string) {
   fileStream.pipe(parser);
 }
 
-const { table, filePath, mode } = program.opts();
+const { table, filePath, mode, region } = program.opts();
 
 if (!table || !filePath) {
   console.error('Please provide the required options.');
@@ -156,11 +165,11 @@ if (!table || !filePath) {
     // Export mode
     console.log('Export mode selected.');
     // Call the exportTableToJson function here
-    void exportTableToJson(table, filePath);
+    void exportTableToJson(table, filePath, region);
   } else if (mode === 'import') {
     // Import mode
     console.log('Import mode selected.');
-    void importJsonToTable(table, filePath);
+    void importJsonToTable(table, filePath, region);
   } else {
     console.error('Invalid mode. Please select either "export" or "import".');
     program.help();
