@@ -1,5 +1,5 @@
 \
-Dynoport
+ ![Dynoport](https://i.imgur.com/qYeuhfG.png) Dynoport
 ==========
 
 [![npm version](https://badge.fury.io/js/dynoport.svg)](https://badge.fury.io/js/dynoport) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/axios?style=flat-square)](https://bundlephobia.com/package/dynoport@latest)
@@ -63,6 +63,10 @@ This command will import the data from the "./data.json" file and insert it into
 - During import, the JSON file should contain an array of objects, where each object represents a record to be inserted into the DynamoDB table.
 
 - For large datasets, the import operation is batched to ensure efficient processing. The batch size can be adjusted using the `chunkSize` variable in the code.
+
+## Attributions
+
+
 
 ## Version
 
