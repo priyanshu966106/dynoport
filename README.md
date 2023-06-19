@@ -1,5 +1,5 @@
 \
- <img src="https://i.imgur.com/qYeuhfG.png" width="100" height="100" title="Dynoport"> Dynoport
+ <img src="https://i.imgur.com/qYeuhfG.png" width="30" height="30" title="Dynoport"> Dynoport
 ==========
 
 [![npm version](https://badge.fury.io/js/dynoport.svg)](https://badge.fury.io/js/dynoport) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/axios?style=flat-square)](https://bundlephobia.com/package/dynoport@latest)
