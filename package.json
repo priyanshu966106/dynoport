@@ -1,6 +1,6 @@
 {
   "name": "dynoport",
-  "version": "0.0.3-development",
+  "version": "0.0.4-development",
   "description": "Dynoport is a CLI tool that allows you to easily import and export data from a specified DynamoDB table. It provides a convenient way to transfer data between DynamoDB and JSON files",
   "files": [
     "!lib/__tests__/**/*",
